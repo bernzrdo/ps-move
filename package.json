@@ -5,6 +5,29 @@
   },
   "devDependencies": {
     "@types/chroma-js": "^2.4.3",
-    "@types/node": "^20.11.0"
-  }
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2"
+  },
+  "name": "ps-move",
+  "description": "Interface with the Playstation Move motion controller.",
+  "version": "1.0.1",
+  "main": "index.ts",
+  "scripts": {
+    "test": "ts-node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernzrdo/ps-move.git"
+  },
+  "keywords": [
+    "playstation",
+    "playstation-move",
+    "psmoveapi"
+  ],
+  "author": "bernzrdo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bernzrdo/ps-move/issues"
+  },
+  "homepage": "https://github.com/bernzrdo/ps-move#readme"
 }

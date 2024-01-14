@@ -1,4 +1,4 @@
-# ps-move
+# <img src="https://i.imgur.com/7kBgBXz.png" height="16" alt="PlayStation Move"> ps-move
 
 Interface with the **Playstation Move motion controller**. This module can receive inputs and set the LED color and rumble.
 
@@ -116,20 +116,20 @@ move.on('data', data=>{
 
 #### `Data`
 
-| Name            | Type                  | Description                    |
-|-----------------|-----------------------|--------------------------------|
-| `select`        | `boolean`             | **SELECT** button              |
-| `start`         | `boolean`             | **START** button               |
-| `square`        | `boolean`             | **◻** button                   |
-| `cross`         | `boolean`             | **X** button                   |
-| `circle`        | `boolean`             | **O** button                   |
-| `triangle`      | `boolean`             | **△** button                   |
-| `ps`            | `boolean`             | **PS** button                  |
-| `move`          | `boolean`             | **Move** button                |
-| `trigger`       | `number`              | **Trigger** button from 0 to 1 |
-| `battery`       | [`Battery`](#battery) | Battery information            |
-| `accelerometer` | [`Vector3`](#vector3) | Vector of the accelerometer    |
-| `gyroscope`     | [`Vector3`](#vector3) | Vector of the gyroscope        |
+| Name            | Type                  | Description                                                                      |
+|-----------------|-----------------------|----------------------------------------------------------------------------------|
+| `select`        | `boolean`             | **SELECT** button                                                                |
+| `start`         | `boolean`             | **START** button                                                                 |
+| `square`        | `boolean`             | <img src="https://i.imgur.com/ckIVj5l.png" height="12" alt="Square"> button      |
+| `cross`         | `boolean`             | <img src="https://i.imgur.com/aNg4wYr.png" height="12" alt="Cross"> button       |
+| `circle`        | `boolean`             | <img src="https://i.imgur.com/4JVQs7b.png" height="12" alt="Circle"> button      |
+| `triangle`      | `boolean`             | <img src="https://i.imgur.com/90NqScg.png" height="12" alt="Triangle"> button    |
+| `ps`            | `boolean`             | <img src="https://i.imgur.com/vXTv3PZ.png" height="12" alt="PlayStation"> button |
+| `move`          | `boolean`             | <img src="https://i.imgur.com/7kBgBXz.png" height="12" alt="Move"> button        |
+| `trigger`       | `number`              | **Trigger (T)** button pressure from 0 to 1                                      |
+| `battery`       | [`Battery`](#battery) | Battery information                                                              |
+| `accelerometer` | [`Vector3`](#vector3) | Vector of the accelerometer                                                      |
+| `gyroscope`     | [`Vector3`](#vector3) | Vector of the gyroscope                                                          |
 
 #### `Battery`
 
