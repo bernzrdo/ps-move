@@ -29,3 +29,9 @@
 ### 1.1.1
 
 - Compilation fix.
+
+### 1.1.2
+
+- Bug fix: Keep the LED and rumble alive.
+- New method: `destroy()`.
+- Link to the changelog on the [README](README.md) file.

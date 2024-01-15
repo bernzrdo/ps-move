@@ -1,7 +1,7 @@
 {
   "name": "ps-move",
   "description": "Interface with the Playstation Move motion controller.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {

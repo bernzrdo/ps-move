@@ -21,6 +21,7 @@ export declare class PSMove extends EventEmitter {
     #private;
     constructor(ready?: () => void);
     get battery(): Battery;
+    destroy(): Promise<void>;
 }
 export interface Battery {
     level: number | null;

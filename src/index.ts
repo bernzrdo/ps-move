@@ -54,6 +54,7 @@ export class PSMove extends EventEmitter {
         gyroscope: { x: 0, y: 0, z: 0 }
 
     }
+    #interval: NodeJS.Timeout | undefined;
     
     constructor(ready?: ()=>void){
         super();
@@ -63,6 +64,15 @@ export class PSMove extends EventEmitter {
             this.#device.on('data', buffer=>this.#handle(buffer));
             this.#device.on('error', e=>this.emit('error', e));
             
+            // the LED turns of if not updated every 5 seconds
+            // updating 4 seconds, just to be safe
+            this.#interval = setInterval(()=>{
+                
+                if(this.#lastColor.hex('rgb') !== '#000000' && this.#rumble !== 0)
+                    this.#update();
+
+            }, 4e3);
+
             if(ready) ready();
 
         })();
@@ -179,18 +189,24 @@ export class PSMove extends EventEmitter {
         return this;
     }
 
+    // last color/rumble sent to the controller
     #lastColor = chroma(0x000000);
     #lastRumble = 0;
 
     /** Update color and rumble */
     async update(){
-        if(!this.#device) return false;
         
         if(
             this.#lastColor.hex('rgb') === this.#color.hex('rgb') &&
             this.#lastRumble === this.#rumble
         ) return true;
         
+        return await this.#update();
+    }
+
+    async #update(){
+        if(!this.#device) return false;
+
         this.#lastColor = this.#color;
         this.#lastRumble = this.#rumble;
 
@@ -201,7 +217,12 @@ export class PSMove extends EventEmitter {
         // https://github.com/thp/psmoveapi/blob/master/src/psmove.c#L123-L132
 
         return await this.#device.write([ 6, 0, r, g, b, 0, rumble, 0, 0]) > 0;
-        
+
+    }
+
+    async destroy(){
+        if(this.#interval) clearInterval(this.#interval);
+        if(this.#device) await this.#device.close();
     }
     
 }

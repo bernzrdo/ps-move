@@ -110,6 +110,14 @@ if(await move.update()){
 }
 ```
 
+#### `destroy()`
+
+End the connection with the controller.
+
+```ts
+await move.destroy();
+```
+
 ### Events
 
 #### `data`
@@ -200,6 +208,10 @@ move.on('error', error=>{
 |----------|-------------------|---------------------------------------------|
 | `amount` | `number`          | **Trigger (T)** button pressure from 0 to 1 |
 | `data`   | [`Data`](#data-1) | The related Data object.                    |
+
+## Changelog
+
+Consult the changelog here: [CHANGELOG.md](CHANGELOG.md)
 
 ## Acknowledgments
 
