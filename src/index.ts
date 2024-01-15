@@ -24,6 +24,8 @@ export declare interface PSMove {
     rumble(): number;
     rumble(rumble: number): this;
 
+    update(): Promise<boolean>;
+    
 }
 
 export class PSMove extends EventEmitter {

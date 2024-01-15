@@ -1,19 +1,12 @@
 {
-  "dependencies": {
-    "chroma-js": "^2.4.2",
-    "node-hid": "^3.0.0"
-  },
-  "devDependencies": {
-    "@types/chroma-js": "^2.4.3",
-    "@types/node": "^20.11.0",
-    "ts-node": "^10.9.2"
-  },
   "name": "ps-move",
   "description": "Interface with the Playstation Move motion controller.",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "type": "module",
   "main": "index.ts",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "ts-node test"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -29,5 +22,15 @@
   "bugs": {
     "url": "https://github.com/bernzrdo/ps-move/issues"
   },
-  "homepage": "https://github.com/bernzrdo/ps-move#readme"
+  "homepage": "https://github.com/bernzrdo/ps-move#readme",
+  "dependencies": {
+    "chroma-js": "^2.4.2",
+    "node-hid": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/chroma-js": "^2.4.3",
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
 }

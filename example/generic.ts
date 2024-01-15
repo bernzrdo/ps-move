@@ -1,5 +1,5 @@
 import chroma from 'chroma-js';
-import { PSMove } from './index';
+import { PSMove } from '../src/index';
 
 let move = new PSMove(()=>{
     console.log('Connected! Click some buttons to test the LEDs and rumble.')
