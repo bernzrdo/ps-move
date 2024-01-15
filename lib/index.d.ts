@@ -3,6 +3,8 @@ import EventEmitter from 'events';
 export declare interface PSMove {
     on(event: 'data', listener: (data: Data) => void): this;
     on(event: 'error', listener: (error: any) => void): this;
+    on(event: 'buttonDown' | 'buttonUp', listener: (event: ButtonEvent) => void): this;
+    on(event: 'triggerChange', listener: (event: TriggerEvent) => void): this;
     hex(): string;
     hex(hex: string | number): this;
     rgb(): [number, number, number];
@@ -18,6 +20,7 @@ export declare interface PSMove {
 export declare class PSMove extends EventEmitter {
     #private;
     constructor(ready?: () => void);
+    get battery(): Battery;
 }
 export interface Battery {
     level: number | null;
@@ -41,4 +44,13 @@ export interface Data {
     battery: Battery;
     accelerometer: Vector3;
     gyroscope: Vector3;
+}
+export interface ButtonEvent {
+    button: 'select' | 'start' | 'square' | 'cross' | 'circle' | 'triangle' | 'ps' | 'move';
+    state: boolean;
+    data: Data;
+}
+export interface TriggerEvent {
+    amount: number;
+    data: Data;
 }
