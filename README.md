@@ -62,6 +62,16 @@ const move = new PSMove(()=>console.log('Ready!'));
 
 On the constructor, you can pass a function that will be triggered when the instance is ready.
 
+### Properties
+
+#### `battery`
+
+Returns the last known [Battery](#battery-1) data.
+
+```ts
+console.log(move.battery); // { level: 4, chargingStatus: 'not_charging' }
+```
+
 ### Methods
 
 #### `hex()`, `rgb()`, `hsl()`
@@ -112,6 +122,36 @@ move.on('data', data=>{
 });
 ```
 
+#### `buttonDown`, `buttonUp`
+
+Emits a [`ButtonEvent`](#buttonevent) object when a button is pressed.
+
+```ts
+move.on('buttonDown', e=>{
+    console.log(e); // { button: 'square', state: true, data: { ... } }
+});
+```
+
+#### `triggerChange`
+
+Emits a [`TriggerEvent`](#triggerevent) object when the pressure on the trigger button is changed.
+
+```ts
+move.on('triggerChange', e=>{
+    console.log(e.amount); // 0.8653
+});
+```
+
+#### `error`
+
+Emits any error received from the controller connection.
+
+```ts
+move.on('error', error=>{
+    // Uh oh!
+});
+```
+
 ### Interfaces
 
 #### `Data`
@@ -145,6 +185,21 @@ move.on('data', data=>{
 | `x`  | `number` |
 | `y`  | `number` |
 | `z`  | `number` |
+
+#### `ButtonEvent`
+
+| Name     | Type              | Description                                                                         |
+|----------|-------------------|-------------------------------------------------------------------------------------|
+| `button` | `string`          | Returns `select`, `start`, `square`, `cross`, `circle`, `triangle`, `ps` or `move`. |
+| `state`  | `boolean`         | Returns `true` if the button is pressed.                                            |
+| `data`   | [`Data`](#data-1) | The related Data object.                                                            |
+
+#### `TriggerEvent`
+
+| Name     | Type              | Description                                 |
+|----------|-------------------|---------------------------------------------|
+| `amount` | `number`          | **Trigger (T)** button pressure from 0 to 1 |
+| `data`   | [`Data`](#data-1) | The related Data object.                    |
 
 ## Acknowledgments
 

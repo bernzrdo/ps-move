@@ -11,9 +11,6 @@ function wave(){
 
 move.on('data', data=>{
 
-    move.rgb(199, 210, 39);
-    console.log(move.hsl());
-
     move.hex(0x000000);
 
     if(data.square)   move.hex('f0a');
@@ -24,23 +21,40 @@ move.on('data', data=>{
     if(data.move)     move.hsl(Date.now() / 10 % 360, 1, .5);
     if(data.ps)       move.hsl(0, 0, wave());
 
-    if(data.select){
-        let scale = chroma.scale(['000', '0bf']);
-        move.hex(scale(wave()).hex());
-    }
-    
-    if(data.start){
-        let scale = chroma.scale(['f4b', '000']);
-        move.hex(scale(wave()).hex());
-    }
-    
-    if(data.select && data.start){
-        let scale = chroma.scale(['f4b', '0bf']);
-        move.hex(scale(wave()).hex());
-    }
-
     move.rumble(data.trigger);
 
     move.update();
+
+});
+
+move.on('error', e=>{
+    console.log(e);
+});
+
+move.on('buttonDown', e=>{
+
+    console.log(e);
+
+    if(e.button == 'start'){
+        console.log(move.battery);
+    }
+
+    if(e.button == 'select'){
+        console.log('SELECT: Down!');
+    }
+
+});
+
+move.on('buttonUp', e=>{
+
+    if(e.button == 'select'){
+        console.log('SELECT: Up!');
+    }
+
+});
+
+move.on('triggerChange', e=>{
+
+    console.log(Array(Math.round(e.amount * 50)).fill('▇').join(''));
 
 });
