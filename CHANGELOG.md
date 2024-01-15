@@ -35,3 +35,7 @@
 - Bug fix: Keep the LED and rumble alive.
 - New method: `destroy()`.
 - Link to the changelog on the [README](README.md) file.
+
+### 1.1.3
+
+- Keep LED/rumble alive fix.

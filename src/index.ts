@@ -68,7 +68,7 @@ export class PSMove extends EventEmitter {
             // updating 4 seconds, just to be safe
             this.#interval = setInterval(()=>{
                 
-                if(this.#lastColor.hex('rgb') !== '#000000' && this.#rumble !== 0)
+                if(this.#color.hex('rgb') !== '#000000' || this.#rumble !== 0)
                     this.#update();
 
             }, 4e3);
